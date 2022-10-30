@@ -13,15 +13,29 @@
       rel="stylesheet" />
     <script src="./js/Main.js" defer></script>
   </head>
-  <body class="bg-amber-600">
-    <main>
-      <h1 id="title">Roman Numeral Converter</h1>
-      <p id="output">This is the output section</p>
+  <body
+    class="flex flex-col items-center justify-center bg-gray-100 min-h-screen">
+    <main
+      class="bg-amber-500 w-8/12 p-4 rounded-md shadow-lg flex flex-col items-center text-center">
+      <h1 id="title" class="font-bold text-4xl text-white mb-8">
+        Roman Numeral Converter
+      </h1>
+
       <input
+        class="appearance-none p-1 rounded-md mb-4 w-full text-center"
         type="number"
         id="input"
+        min="1"
+        max="9999999"
         placeholder="Please enter a whole number" />
-      <button id="submit">Test function</button>
+      <button id="submit" class="bg-green-400 p-2 rounded-md mb-4">
+        Test function
+      </button>
+      <p
+        id="output"
+        class="bg-cyan-400 p-1 rounded-md w-full text-center break-words">
+        This is the output section
+      </p>
     </main>
   </body>
 </html>

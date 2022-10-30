@@ -22,10 +22,15 @@ let quotient;
 let remainder;
 let romanOutput = "";
 
-submitButton.onclick = () => {
-  Init();
-  let answer = Convert(Math.floor(input.value));
-  output.innerHTML = answer;
+input.addEventListener("keypress", function (event) {
+  console.log(event.key);
+  if (event.key === "Enter") {
+    Convert();
+  }
+});
+
+submitButton.onclick = function () {
+  Convert();
 };
 
 function Init() {
@@ -34,7 +39,13 @@ function Init() {
   romanOutput = "";
 }
 
-function Convert(number, loop = 0) {
+function Convert(e) {
+  Init();
+  let answer = ConvertToRoman(Math.floor(input.value));
+  output.innerHTML = answer;
+}
+
+function ConvertToRoman(number, loop = 0) {
   quotient = number / arabicNumerals[loop];
   remainder = number % arabicNumerals[loop];
   //find out how many times the arabic number goes into the input
@@ -45,7 +56,7 @@ function Convert(number, loop = 0) {
     }
     //if there is a remainder continue converting
     if (remainder > 0) {
-      Convert(remainder, loop < 12 ? ++loop : 12);
+      ConvertToRoman(remainder, loop < 12 ? ++loop : 12);
     }
   }
   return romanOutput;
